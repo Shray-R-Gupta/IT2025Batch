@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <div id="dice">
+        <h4 id="dice">ROLL THE DICE</h4>
+        <button onclick="generateN2()" id="b1">Roll The dice</button>
+        <script>
+          function generateN2() {
+            let val = Math.floor(Math.random() * 6) + 1;
+            document.getElementById("b1").innerText = val;
+          }
+        </script>
+      </div>
+      <div id="random">
+        <h4>Guess Random No.</h4>
+        <button onclick="randomNumber(1,10)" id="R1">GUESS</button>
+        <script>
+          function randomNumber(min, max) {
+            let val = Math.floor(Math.random() * (max - min) + min);
+            document.getElementById("R1").innerText = val;
+          }
+        </script>
+      </div>
+      <div id="rps">
+        <h4>ROCK PAPER SCISSOR</h4>
+        <button onclick="playRockPaperScissors()" id="rpsButton">
+          Play Rock Paper Scissors
+        </button>
+        <script>
+          function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            const randomIndex = Math.floor(Math.random() * choices.length);
+            return choices[randomIndex];
+          }
+
+          function determineWinner(userChoice, computerChoice) {
+            if (userChoice === computerChoice) {
+              return "Tie";
+            } else if (
+              (userChoice === "rock" && computerChoice === "scissors") ||
+              (userChoice === "scissors" && computerChoice === "paper") ||
+              (userChoice === "paper" && computerChoice === "rock")
+            ) {
+              return "User";
+            } else {
+              return "Computer";
+            }
+          }
+
+          function playRockPaperScissors() {
+            const userChoice = prompt(
+              "Enter your choice (rock, paper, scissors):"
+            ).toLowerCase();
+            const computerChoice = getComputerChoice();
+            const winner = determineWinner(userChoice, computerChoice);
+            alert(
+              `You chose ${userChoice}, computer chose ${computerChoice}. ${winner} wins!`
+            );
+          }
+        </script>
+      </div>
+    </center>
+  </body>
+</html>
